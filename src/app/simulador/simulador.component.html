@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="row col-12">
+            <div class="col-md-8">
+                <h1 class="titulo">Simular seu Imposto de renda</h1>
+            </div>
+            <div class="col-md-4">
+                <button class="botao" routerLink="/home">Voltar</button>
+            </div>
+        </div>
+
+        <div class="row col-12">
+            <h5 *ngIf="user">Olá, {{user }}</h5>
+        </div>
+
+        <div class="row col-12">
+            <p>
+                Calcule aqui o IR Pessoa Física 2023.
+                Preencha com os dados da sua declaração IR para
+                prosseguir com a simulação.
+            </p>
+        </div>
+        <form [formGroup]="formData">
+            <div class="row">
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="renda">Qual sua renda mensal bruta?<span class="text-danger"> *</span></label>
+                    <input class="form-input form-control" formControlName="monthlyIncome" type="number" name="renda"
+                        required>
+                </div>
+
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="dependente">Quantos dependentes você tem?<span class="text-danger"> *</span></label>
+                    <label>Caso não tenha, siga para o próximo campo</label>
+                    <input class="form-input form-control" formControlName="totalDependents" type="number"
+                        name="dependente">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="ensino">Qual seu gasto mensal com ensino?<span class="text-danger"> *</span></label>
+                    <input class="form-input form-control" formControlName="monthlyEducationExpense" type="number"
+                        name="ensino">
+                </div>
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="pensao">Qual seu gasto mensal com pensão alimentícia?<span class="text-danger">
+                            *</span></label>
+                    <input class="form-input form-control" formControlName="monthlyAlimonyExpense" type="number"
+                        name="pensao">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="medica">Qual sua despesa mensal médica?<span class="text-danger"> *</span></label>
+                    <input class="form-input form-control" formControlName="monthlyMedicalExpense" type="number"
+                        name="medica">
+                </div>
+
+                <div class="col-md-6 form-group  mt-4">
+                    <label for="fonte">Outras despesas</label>
+                    <input class="form-input form-control" formControlName="otherDeductions" type="number" name="fonte">
+                </div>
+            </div>
+        </form>
+
+        <div class="row mt4" *ngIf="calculation">
+            <strong> O total de imposto a ser pago é de: {{ calculation.totalPayable | currency:'BRL':true:'1.2-2'
+                }}</strong>
+        </div>
+
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <button class="botao" (click)="simulator()">Calcular</button>
+        </div>
+    </div>
+</div>

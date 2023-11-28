@@ -1,0 +1,114 @@
+<div *ngIf="step === 1; else step2 " class="container p-0">
+    <div class="row">
+        <div class="col-md-7 p-4">
+
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h1 class="titulo">Cadastro</h1>
+                </div>
+                <div class="col-4">
+                    <button class="botao" [routerLink]="['/cadastro-opcoes']">Voltar</button>
+                </div>
+            </div>
+
+            <form [formGroup]="formDataRegister">
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="nome">Primeiro Nome</label>
+                        <input class="form-input form-control" formControlName="firstName" type="text" name="nome"
+                            required>
+                    </div>
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="sobrenome">Sobrenome</label>
+                        <input class="form-input form-control" formControlName="surname" type="text" name="sobrenome"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group mt-4">
+                        <label for="email">E-mail</label>
+                        <input class="form-input form-control" formControlName="email" type="email" name="email"
+                            required>
+                    </div>
+
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="confirme-email">Confirmar E-mail</label>
+                        <input class="form-input form-control" type="email" formControlName="confirmEmail"
+                            name="confirme-email" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="cpf">CPF</label>
+                        <input class="form-input form-control" formControlName="cpf" type="cpf" name="cpf" required>
+                    </div>
+
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="telefone">Telefone</label>
+                        <input class="form-input form-control" formControlName="phoneNumber" type="tel" name="telefone"
+                            autocomplete="phone" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="senha">Senha</label>
+                        <input class="form-input form-control" formControlName="password" type="password" name="senha"
+                            autocomplete="new-password" required>
+                    </div>
+
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="confirm-senha">Confirmar Senha</label>
+                        <input class="form-input form-control" formControlName="confirmPassword" type="password"
+                            name="confirm-senha" autocomplete="confirm-password" required>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <label class="mb-1">Gênero</label> <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="genero" type="radio" name="genero"
+                            id="feminino" value="feminino">
+                        <label class="form-check-label" for="feminino">Feminino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="genero" type="radio" name="genero"
+                            id="masculino" value="masculino">
+                        <label class="form-check-label" for="masculino">Masculino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="genero" type="radio" name="genero" id="outros"
+                            value="outros">
+                        <label class="form-check-label" for="outros">Outros</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" formControlName="genero" type="radio" name="genero" id="nenhum"
+                            value="nenhum">
+                        <label class="form-check-label" for="nenhum">Prefiro não dizer</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-md-5">
+            <div class="form-avancar mb-4">
+                <div class="content-continue fonte-branca">
+                    <h2>Vamos agora preencher o seu endereço</h2>
+                    <h4 class="mt-4">Clique no botão a baixo <br>para continuar</h4>
+                    <button class="botao-outline" [disabled]="!formDataRegister.valid"
+                        (click)="step = 2">Avançar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #step2>
+    <app-cadastro-endereco [formData]="formaDataAddress" (goBack)="step = 1" (finished)="submit()"
+        (formDataChange)="formaDataAddress = $event">
+    </app-cadastro-endereco>
+</ng-template>

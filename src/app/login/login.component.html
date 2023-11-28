@@ -1,0 +1,56 @@
+<div class="container p-0">
+    <div class="row">
+        <div class="col-md-6 p-4">
+            <div class="row">
+                <div class="col-md 12 d-flex flex-column align-items-center">
+                    <h1 class="titulo">Entrar</h1>
+                </div>
+            </div>
+
+            <form [formGroup]="formDataLogin">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 form-group  mt-4">
+                        <label *ngIf="hasError" class="text-danger">Usuário ou Senha estão inválidos</label><br>
+                        <label class="mt-2" for="Email">Email</label>
+                        <input class="form-input form-control" formControlName="email" type="email" name="email"
+                            placeholder="email@gmail.com" required>
+
+                        <label class="mt-2" for="senha">Senha</label>
+                        <input class="form-input form-control" formControlName="password" type="password" name="senha"
+                            placeholder="*********" required>
+
+                        <div class="mt-1 d-flex justify-content-between">
+                            <span class="text-secondary"><input type="checkbox"> Lembrar minha senha</span>
+                            <!-- <a class="text-info" href="#">Esqueci minha senha</a> -->
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12 text-center">
+                                <div class="d-flex flex-column align-items-center">
+                                    <button class="botao-login mb-3" (click)="onLogin()">Login</button>
+                                    <!-- <p>ou</p>
+                                    <button class="google">
+                                        <img width="20" alt="Sign in with Google"
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                        Entrar com Google
+                                    </button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-avancar mb-4">
+                <div class="content-continue fonte-branca">
+                    <h1>Olá</h1>
+                    <h3>Cadastre-se e comece a usar nossa plataforma</h3>
+                    <button class="botao-outline" [routerLink]="['/cadastro-opcoes']">Cadastre-se</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

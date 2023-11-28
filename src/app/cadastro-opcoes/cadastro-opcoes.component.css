@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+:root{
+    --cor0: #F24949;
+    --cor1: #F99595;
+    --cor2: #F74A4A;
+    --cor3: #C43B3B;
+}
+.botao-outline[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.container {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.mb-20 {
+    margin-bottom: 10%;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.botao-voltar {
+    margin-left: 200px;
+    align-items: center;
+    display: flex;
+}
+
+.botao {
+    padding: 7px;
+    width: 80px;
+    border-radius: 4px;
+    border-color: var(--cor0);
+    background-color: var(--cor0);
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-style: none;
+    cursor: pointer;
+    float: right;
+    color: white;
+}
+
+.botao:hover {
+    background-color: var(--cor3);
+}
+
+.content-continue {
+    text-align: center;
+    margin-top: 20%; 
+}
+
+.form-avancar {
+    background-color: var(--cor0);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-avancar h1, .form-avancar h3 {
+    margin: 10px 0;
+}
+
+.botao-outline {
+    padding: 8px;
+    width: 150px;
+    border-radius: 10px;
+    outline: 1px solid white;
+    background-color: transparent;
+    margin-top: 30px;
+    cursor: pointer;
+    border-style: none;
+    color: white;
+}
+
+.botao-outline:hover {
+    background-color: var(--cor3);
+}
+
+.form-avancar h1 {
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-avancar h3 {
+    font-weight: normal;
+    text-align: center;
+}
+.form-cadastro {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.fonte-branca {
+    color: white;
+}
+
+.form-login {
+    background-color: var(--cor0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 42px;
+}
+
+.paragrafo {
+    color: white;
+}
+
+.botao-login {
+    padding: 10px;
+    width: 150px;
+    border-radius: 9px;
+    outline: 1px solid white;
+    background-color: var(--cor0);
+    margin-bottom: 20px;
+    margin-top: 3px;
+    cursor: pointer;
+    border-style: none;
+}
+
+.botao-login:hover {
+    background-color: var(--cor3);
+}
+
+.botao-login a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.form-conta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 42px;
+}
+
+.titulo-cadastrar {
+    font-weight: normal;
+    margin-right: 220px;
+}
+
+.cadastrar::after {
+    content: '';
+    display: block;
+    width: 4.2rem;
+    height: 0.3rem;
+    background-color: var(--cor0);
+    margin: 0 auto;
+    margin-left: 3px;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.paragrafo2 {
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+.p-fisica {
+    padding: 17px;
+    width: 250px;
+    border-radius: 9px;
+    outline: 1px solid white;
+    background-color: var(--cor0);
+    margin-bottom: 20px;
+    margin-top: 3px;
+    cursor: pointer;
+    border-style: none;
+    font-size: 1em;
+    font-weight: normal;
+    color: white;
+    text-decoration: none;
+}
+
+.p-fisica:hover{
+    background-color: var(--cor3);
+}
+
+.p-juridica {
+    padding: 17px;
+    width: 250px;
+    border-radius: 9px;
+    outline: 1px solid white;
+    background-color: var(--cor0);
+    margin-bottom: 70px;
+    margin-top: 3px;
+    cursor: pointer;
+    border-style: none;
+    font-size: 1em;
+    font-weight: normal;
+    color: white;
+    text-decoration: none;
+}
+
+.p-juridica:hover{
+    background-color: var(--cor3);
+}

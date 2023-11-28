@@ -1,0 +1,72 @@
+<div class="container p-0">
+    <div class="row">
+        <div class="col-md-7 p-4">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <h1 class="titulo">Endereço</h1>
+                </div>
+                <div class="col-4">
+                    <button class="botao" (click)="goBack.emit()">Voltar</button>
+                </div>
+            </div>
+
+            <form [formGroup]="formData">
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="estado">Estado</label>
+                        <input class="form-input form-control" formControlName="state" type="text" name="estado"
+                            required>
+                    </div>
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="cidade">Cidade</label>
+                        <input class="form-input form-control" formControlName="city" type="text" name="cidade"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="logradouro">Logradouro</label>
+                        <input class="form-input form-control" formControlName="publicPlace" type="text"
+                            name="logradouro" required>
+                    </div>
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="bairro">Bairro</label>
+                        <input class="form-input form-control" formControlName="neighborhood" type="text" name="bairro"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="numero">Número</label>
+                        <input class="form-input form-control" formControlName="number" type="number" name="numero"
+                            required>
+                    </div>
+                    <div class="col-md-6 form-group  mt-4">
+                        <label for="cep">CEP</label>
+                        <input class="form-input form-control" formControlName="zipCode" type="cep" name="cep" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group  mt-4">
+                        <label for="complemento">Complemento</label>
+                        <input class="form-input form-control" formControlName="complement" type="text"
+                            name="complemento" required>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-5">
+            <div class="form-avancar mb-4">
+                <div class="content-continue fonte-branca">
+                    <h2>Estamos quase lá</h2>
+                    <h4>Clique no botão a baixo<br>para finalizar seu cadastro </h4>
+                    <button class="botao-outline" [disabled]="!formData.valid"
+                        (click)="finished.emit()">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

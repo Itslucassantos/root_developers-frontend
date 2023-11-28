@@ -1,0 +1,194 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fff!important;">
+    <a class="navbar-brand" href="#">
+        <img src="../../assets/imagens/logo.png" width="200" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#sobre">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#quem-somos">Quem nós somos</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn" [routerLink]="['/cadastro-opcoes']">Cadastre-se agora</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-outline-success" [routerLink]="['/login']">Entrar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container mt-4" style="box-shadow: none !important;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3 class="titulo-header">Conheça nosso simulador de imposto de renda</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup]="formDataLogin">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 form-group mt-4">
+                        <label *ngIf="hasError" class="text-danger">Usuário ou Senha estão inválidos</label><br>
+                        <label class="mt-2" for="Email">Email</label>
+                        <input class="form-input form-control" formControlName="email" type="email" name="email"
+                            placeholder="email@gmail.com" required>
+
+                        <label class="mt-2" for="senha">Senha</label>
+                        <input class="form-input form-control" formControlName="password" type="password" name="senha"
+                            placeholder="*********" required>
+
+                        <div class="mt-1 d-flex justify-content-between">
+                            <span class="text-secondary"><input type="checkbox"> Lembrar minha senha</span>
+                            <!-- <a class="text-info" href="#">Esqueci minha senha</a> -->
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-12 text-center">
+                                <div class="d-flex flex-column align-items-center">
+                                    <button class="botao-login mb-3" (click)="onLogin()">Login</button>
+                                    <!-- <p>ou</p>
+                                    <button class="google">
+                                        <img class="img-fluid" alt="Sign in with Google"
+                                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                        Entrar com Google
+                                    </button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form class="entrar-form form-image">
+                <img class="img-fluid" src="../../assets/imagens/undraw_team_work_k-80-m.svg" alt="teamwork">
+                <img class="img-fluid" src="../../assets/imagens/undraw_finance_re_gnv2.svg" alt="finance">
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <section class="sobre" id="sobre">
+            <div class="about">
+                <div class="row">
+                    <div class="col-md-6">
+                        <article class="sobre-part">
+                            <h1>Bem-vindo ao rootDev.</h1>
+                            <h2>Sobre o rootDev</h2>
+                            <p class="text-justify">
+                                Temos como objetivo disponibilizar de maneira gratuita o serviço de simulação de imposto
+                                de renda, visando
+                                facilitar para pessoas que têm dificuldades para fazer os cálculos e também agilizar o
+                                processo.
+                            </p>
+                            <p class="text-justify">Faça seu cadastro de maneira gratuita, clicando no botão abaixo</p>
+                            <button class="botao-login" [routerLink]="['/cadastro-opcoes']">Cadastre-se</button>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6">
+                        <article class="sobre-part">
+                            <img class="img-fluid" width="400" src="../../assets/imagens/undraw_nakamoto_-2-iv6.svg"
+                                alt="plataforma">
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="row">
+        <section class="quem" id="quem-somos">
+            <div class="card-deck row col-md-12">
+                <article class="card quem-somos col-md-4">
+                    <div class="card-body text-center">
+                        <img src="../../assets/imagens/Jonathan.jpeg" alt="Foto_Perfil_Jonathan" class="rounded-circle"
+                            style="width: 150px; height: 150px; object-fit: cover; border: 3px solid red;">
+                        <h1 class="card-title titulo-who mt-3">Jonathan Carvalho</h1>
+                        <h3 class="card-subtitle mb-2 text-muted apresentacao">Olá, visitante!</h3>
+                        <p class="card-text resumo">Me chamo Jonathan Carvalho, estudo Ciência da Computação na
+                            Unimetrocamp e fiquei responsável nesse projeto como desenvolvedor Front-End utilizando
+                            as Linguagens HTML e CSS. Espero que tenha gostado, caso queira saber mais informações a
+                            meu respeito clique no botão abaixo</p>
+                        <p class="card-text resumo">RA: 202208716891</p>
+                        <ul class="list-unstyled links">
+                            <li><img src="../../assets/imagens/icone-github.png" alt="github"><a
+                                    href="https://github.com/Itslucassantos/root_developers" target="_blank">Github
+                                    do Projeto</a></li>
+                            <li><img src="../../assets/imagens/icone-linkedin.png" alt="Linkedin" class="img-link"><a
+                                    href="https://www.linkedin.com/in/jonathandcarvalhoti/" target="_blank">Linkedin</a>
+                            </li>
+                        </ul>
+                        <button class="botao-login">Saiba Mais</button>
+                    </div>
+                </article>
+
+                <article class="card quem-somos col-md-4">
+                    <div class="card-body text-center">
+                        <img src="../../assets/imagens/Lucas.jpg" alt="Foto_Perfil_Lucas" class="rounded-circle"
+                            style="width: 150px; height: 150px; object-fit: cover; border: 3px solid red;">
+                        <h1 class="card-title titulo-who mt-3">Lucas Santos</h1>
+                        <h3 class="card-subtitle mb-2 text-muted apresentacao">Olá, visitante!</h3>
+                        <p class="card-text resumo">Me chamo Lucas Santos, estudo Ciência da Computação na
+                            Unimetrocamp e fiquei responsável nesse projeto como desenvolvedor Back-End utilizando a
+                            Linguagem Java e também criação do banco de dados utilizando o MySQL. Espero que tenha
+                            gostado, caso queira saber mais informações a meu respeito clique no botão abaixo</p>
+                        <p class="card-text resumo">RA: 202203560816</p>
+                        <ul class="list-unstyled links">
+                            <li><img src="../../assets/imagens/icone-github.png" alt="github"><a
+                                    href="https://github.com/Itslucassantos/root_developers" target="_blank">Github
+                                    do Projeto</a></li>
+                            <li><img src="../../assets/imagens/icone-linkedin.png" alt="Linkedin" class="img-link"><a
+                                    href="https://www.linkedin.com/in/lucas-santos-729047236/"
+                                    target="_blank">Linkedin</a>
+                            </li>
+                        </ul>
+                        <button class="botao-login">Saiba Mais</button>
+                    </div>
+                </article>
+
+                <article class="card quem-somos col-md-4">
+                    <div class="card-body text-center">
+                        <img src="../../assets/imagens/Vinicius.jpg" alt="Foto_Perfil_Vinicius" class="rounded-circle"
+                            style="width: 150px; height: 150px; object-fit: cover; border: 3px solid red;">
+                        <h1 class="card-title titulo-who mt-3">Vinicius Debroi</h1>
+                        <h3 class="card-subtitle mb-2 text-muted apresentacao">Olá, visitante!</h3>
+                        <p class="card-text resumo">Me chamo Vinicius Debroi, estudo Sistemas da Informação na
+                            Unimetrocamp e fiquei responsável nesse projeto como desenvolvedor Back-End utilizando a
+                            Linguagem JavaScript. Espero que tenha gostado, caso queira saber mais informações a meu
+                            respeito clique no botão abaixo</p>
+                        <p class="card-text resumo">RA: 202212115927</p>
+                        <ul class="list-unstyled links">
+                            <li><img src="../../assets/imagens/icone-github.png" alt="github"><a
+                                    href="https://github.com/Itslucassantos/root_developers" target="_blank">Github
+                                    do Projeto</a></li>
+                            <li><img src="../../assets/imagens/icone-linkedin.png" alt="Linkedin" class="img-link"><a
+                                    href="https://www.linkedin.com/in/vinicius-debroi-0739a2180/"
+                                    target="_blank">Linkedin</a>
+                            </li>
+                        </ul>
+                        <button class="botao-login">Saiba Mais</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+</div>

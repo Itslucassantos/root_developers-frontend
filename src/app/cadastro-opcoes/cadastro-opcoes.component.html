@@ -1,0 +1,27 @@
+<div class="container p-0">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-avancar">
+                <div class="content-continue fonte-branca mb-20">
+                    <h1>Já possui uma conta ?</h1>
+
+                    <p>Clique no botão abaixo e efetue o login para usar a nossa plataforma</p>
+
+                    <button class="botao-outline" [routerLink]="['/login']">Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="content-continue cadastro mb-20">
+                <h1>Cadastrar</h1>
+                <p>Seleciona abaixo o tipo de conta desejada</p>
+
+                <div class="botao-cadastro">
+                    <button class="p-fisica" [routerLink]="['/cadastro/pessoa-fisica']">Pessoa Física</button>
+                    <br>
+                    <button class="p-juridica" [routerLink]="['/cadastro/pessoa-juridica']">Pessoa Jurídica</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
