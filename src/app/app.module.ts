@@ -15,6 +15,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ResourceInterceptor } from './core/http/http.interceptor';
 import { SimuladorComponent } from './simulador/simulador.component';
 import { ToastrModule } from 'ngx-toastr';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './core/state/oauth.reducer';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    StoreModule.forRoot({ auth: authReducer}),
     AppRoutingModule
   ],
   providers: [

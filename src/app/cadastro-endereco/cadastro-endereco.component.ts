@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { AuthState } from '../core/state/oauth.state';
+import { Store } from '@ngrx/store';
+import { LegalClient, PhysicalClientDto } from '../cadastro-opcoes/model/cadastro-model';
+import { selectUser } from '../core/state/oauth.selectors';
 
 @Component({
   selector: 'app-cadastro-endereco',
@@ -16,11 +20,31 @@ export class CadastroEnderecoComponent implements OnInit {
   @Input()
   formData!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder){}
+  user!: LegalClient | PhysicalClientDto;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _oauthStore: Store<AuthState>,
+    ){}
 
   ngOnInit(): void {
-    this.buildForm();   
+    this.buildForm(); 
+    this._oauthStore.select(selectUser)
+    .subscribe(userLogged => {
+      if(userLogged) { 
+        this.user = userLogged;
+
+        if(this.user) {
+          this.formData.patchValue(this.user.address);
+        }
+        this.formDataChange.emit(this.formData); 
+      }
+
+    })
+
     this.subscriptionValueChanges();
+
+   
   }
 
   private buildForm() {
@@ -38,7 +62,10 @@ export class CadastroEnderecoComponent implements OnInit {
 
     if(value) {
         this.formData.patchValue(value);
-    }  
+    } else if(this.user) {
+      this.formData.patchValue(this.user.address);
+    }
+    this.formDataChange.emit(this.formData);
   }
 
   private subscriptionValueChanges() {

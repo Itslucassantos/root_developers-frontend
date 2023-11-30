@@ -4,10 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
 
 import { matchEmailValidator, matchPasswordValidator, patternValidator } from '../util/form-builder-validation-util';
-import { PhysicalClientDto } from '../cadastro-opcoes/model/cadastro-model';
+import { LegalClient, PhysicalClientDto } from '../cadastro-opcoes/model/cadastro-model';
 import { ClientService } from '../service/client.service';
 import { Router } from '@angular/router';
 import { NotificationService } from '../notification/notification.service';
+import { AuthState } from '../core/state/oauth.state';
+import { Store } from '@ngrx/store';
+import { selectUser } from '../core/state/oauth.selectors';
 
 @Component({
   selector: 'app-cadastro-pessoa-fisica',
@@ -24,39 +27,53 @@ export class CadastroPessoaFisicaComponent implements OnInit {
   public step = 1;
   public saltRounds = 10;
 
+  user!: LegalClient | PhysicalClientDto;
+
   constructor(
     private formBuilder: FormBuilder,
     private _router: Router,
     private _clientService: ClientService,
-    private _notificationService: NotificationService
+    private _notificationService: NotificationService,
+    private _oauthStore: Store<AuthState>,
   ){}
   
   ngOnInit(): void {
-   this.buildFormRegister();
+    this.buildFormRegister();
+
+   this._oauthStore.select(selectUser)
+    .subscribe(userLogged => {
+      if(userLogged) { 
+        this.user = userLogged;
+        if(this.user) {
+          this.formDataRegister.patchValue(this.user);
+        }
+      }
+    })
+
   }
 
   submit() {
     let clientDto: PhysicalClientDto = {
+      id: this.user?.id,
       ...this.formDataRegister.getRawValue(),
-      address: this.formaDataAddress.getRawValue()
+      address: { addressId: this.user?.address?.addressId, ...this.formaDataAddress.getRawValue()}
     }
 
-    bcrypt.hash(clientDto.confirmPassword, this.saltRounds, (err, hash) => {
-      if (err) {
-          console.error('Erro ao gerar o hash da senha:', err);
-      } else {
-          
-          this._clientService.savePhysicalClient(clientDto)
-          .subscribe(resp => {
-            this._notificationService.success("Usuário cadastrado com sucesso!");
-    
-            setTimeout(() => {
-              this._router.navigate(['/login']);
-            }, 500)
-          });
-
+    this._clientService.savePhysicalClient(clientDto)
+    .subscribe({
+      next: resp => {
+        this._notificationService.success("Usuário cadastrado com sucesso!");
+  
+        setTimeout(() => {
+          if(this.user) {
+            this._router.navigate(['/simulador']);
+          } else {
+            this._router.navigate(['/login']);
+          }
+        }, 500)
       }
     });
+
   }
   
   private buildFormRegister() {
@@ -75,11 +92,12 @@ export class CadastroPessoaFisicaComponent implements OnInit {
       cpf: [null, Validators.required],
       password: ['', Validators.compose([ Validators.required, patternValidator()])],
       confirmPassword: ['', Validators.compose([Validators.required, matchPasswordValidator])],
-      genero: [null, Validators.required],
     });
 
     if(dataRegister) {
       this.formDataRegister.patchValue(dataRegister);
+    } else if(this.user) {
+      this.formDataRegister.patchValue(this.user);
     }
   }
 

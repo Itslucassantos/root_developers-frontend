@@ -80,7 +80,6 @@ export class TokenService {
   }
 
   getUsername (): string {
-    debugger
     const token = this.getAccessToken();
     if(token) {
       const payload = token.split(".")[1];

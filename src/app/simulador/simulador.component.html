@@ -5,12 +5,18 @@
                 <h1 class="titulo">Simular seu Imposto de renda</h1>
             </div>
             <div class="col-md-4">
-                <button class="botao" routerLink="/home">Voltar</button>
+
+                <button class="btn btn-outline-danger m-1" (click)="onDelete()">Deletar Conta</button>
+                <button class="btn btn-outline-success m-1" [routerLink]="['/cadastro/pessoa-fisica']">Editar
+                    Conta</button>
+
+
+                <button class="botao m-1" (click)="onLogout()">Sair</button>
             </div>
         </div>
 
         <div class="row col-12">
-            <h5 *ngIf="user">Olá, {{user }}</h5>
+            <h5 *ngIf="user">Olá, {{user.firstName }}</h5>
         </div>
 
         <div class="row col-12">

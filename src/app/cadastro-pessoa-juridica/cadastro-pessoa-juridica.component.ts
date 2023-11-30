@@ -60,7 +60,6 @@ export class CadastroPessoaJuridicaComponent implements OnInit {
       cpf: [null, Validators.required],
       password: ['', Validators.compose([ Validators.required, patternValidator()])],
       confirmPassword: ['', Validators.compose([Validators.required, matchPasswordValidator])],
-      genero: [null, Validators.required],
     });
 
     if(dataRegister) {

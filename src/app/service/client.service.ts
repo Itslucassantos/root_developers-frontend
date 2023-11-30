@@ -13,11 +13,25 @@ export class ClientService {
 
 
   public savePhysicalClient(clientDto: PhysicalClientDto) : Observable<any> {
+    if(clientDto.id) {
+      return this._http.put(`${environment.API_URL}/client`, clientDto);
+    }
     return this._http.post(`${environment.API_URL}/client/physicalClient`, clientDto);
   }
 
   public saveLegalClient(clientDto: LegalClient) : Observable<any> {
+    if(clientDto.id) {
+      return this._http.put(`${environment.API_URL}/client`, clientDto);
+    }
     return this._http.post(`${environment.API_URL}/client/legalClient`, clientDto);
+  }
+
+  public delete(clientId: string) : Observable<any> {
+    return this._http.delete(`${environment.API_URL}/client/${clientId}`)
+  }
+
+  public findByEmail(email: string) : Observable<any> {
+    return this._http.get(`${environment.API_URL}/client/${email}`)
   }
 
 }

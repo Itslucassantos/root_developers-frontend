@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    API_URL: 'https://calculador-api.onrender.com/api',   
+    API_URL: 'http://localhost:8081/api',   
     CLIENT_ID: 'clientFrontend',
     SECRET_ID: 'clientFrontend',
   };
